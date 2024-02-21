@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Interactive card details form</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+    body{
+      margin: 0px;
+      padding: 0px;
+      font-family: sans-serif;
+    }
+    .flex{
+      display: flex;
+    }
+    .bg-image{
+      position: relative;
+      width: 100%;
+    }
+    .cardFront{
+      position: absolute;
+      top: 180px;
+      left: 160px;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      border-radius: 10px;
+      transition: transform 300ms ease-in-out;
+      z-index: 1;
+    }
+    .cardFront:hover{
+      transform: scale(1.03);
+    }
+    .front-card-data{
+      position: absolute;
+      top: 180px;
+      left: 162px;
+      color: white;
+      padding: 25px 10px 10px 30px;
+      z-index: 1;
+    }
+    .cardBack{
+      position: absolute;
+      top: 460px;
+      left: 255px;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      border-radius: 10px;
+      transition: transform 300ms ease-in-out;
+      z-index: 0;
+    }
+    .cardBack:hover{
+      transform: scale(1.03);
+    }
+    .cardBack-data{
+      position: absolute;
+      top: 460px;
+      left: 250px;
+      color: white;
+      margin: 96px 0px 0px 365px; 
+    }
+    .information{
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      width: 100%;
+    }
+    .circle-1{
+      width: 45px;
+      height: 45px;
+      background-color: white;
+      border-radius: 23px;
+      margin-right: 15px
+    }
+    .circle-2{
+      width: 18px;
+      height: 18px;
+      border-radius: 10px;
+      border: 1px solid;
+      margin-top: 15px
+    }
+    input{
+      width: 329px;
+      height: 40px;
+      border-radius: 8px;
+      border: 1px solid rgb(211, 211, 211);
+      padding-left: 10px;
+      margin-top: 6px;
+      margin-bottom: 18px;
+      font-size: 16px;
+      opacity: 0.6;
+      transition: 0.4s ease;
+    }
+    input:hover{
+      opacity: 1;
+      border: 1px solid rgb(60, 32, 215);
+      transform: scale(1.02);
+      transition: 0.4s ease;
+      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+
+    }
+    label{
+      font-size: 12px;
+      font-weight: bold;
+    }
+    button{
+      width: 345px;
+      height: 45px;
+      border: none;
+      background-color: black;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: 0.4s ease;
+    }
+    button:hover{
+      background-image: url(/images/bg-card-front.png);
+      background-position: center;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 8px 0 rgba(0, 0, 0, 0.19);
+      transform: scale(1.08);
+      transition: 0.4s ease;
+    }
+    form{
+      display: flex;
+      justify-content: center;
+    }
+    @media(max-width: 1300px){
+      .cardBack{
+        left: 161px;
+      }
+      .cardBack-data{
+        left: 165px;
+      }
+    }
+    @media(max-width: 1120px){
+      .cardFront{
+        left: 65px;
+      }
+      .front-card-data{
+        left: 73px;
+      }
+      .cardBack{
+        left: 65px;
+      }
+      .cardBack-data{
+        left: 65px;
+      }
+    }
+    @media(max-width: 900px){
+      .cardBack{
+        top: 20px;
+      }
+      .cardBack-data{
+        top: 20px;
+      }
+      .cardBack{
+        left: 110px;
+      }
+      .cardBack-data{
+        left: 110px;
+      }
+      .bg-image-1{
+        height: 400px;
+        width: 100%;
+      }
+      .bg-image{
+        display: block;
+        width: 100%;
+      }
+      form{
+        margin: 50px;
+      }
+    }
+    @media(max-width: 620px){
+      .cardBack{
+        left: 28px;
+      }
+      .cardBack-data{
+        left: 28px;
+      }
+    }
+    @media(max-width: 530px){
+      .cardBack{
+        width: 350px;
+      }
+      .cardFront{
+        width: 350px;
+      }
+      .cardBack-data{
+        left: -58px;
+        top: -7px;
+      }
+      .circle-2{
+        width: 12px;
+        height: 12px;
+      }
+      .circle-1{
+        width: 30px;
+        height: 30px;
+      }
+      h1{
+        font-size: 23px;
+      }
+      #jane{
+        font-size: 12px !important;
+        margin-top: 17px !important;
+      }
+      #date{
+        margin-left: 150px !important;
+      }
+
+    }
+    @media(max-width: 425px){
+      .cardFront{
+        left: 20px;
+        top: 150px;
+      }
+      .front-card-data{
+        left: 20px;
+        top: 150px;
+      }
+      .cardBack{
+        left: 12px;
+      }
+      .cardBack-data{
+        left: -74px;
+      }
+    }
+    @media(max-width: 375px){
+      .cardBack{
+        width: 280px;
+      }
+      .cardFront{
+        width: 280px;
+      }
+      .cardBack-data{
+        left: -132px;
+        top: -23px;
+        font-size: 14px;
+      }
+      .circle-1{
+        width: 25px;
+        height: 25px;
+      }
+      .circle-2{
+        width: 10px;
+        height: 10px;
+        margin-top: 10px;
+      }
+      h1{
+        font-size: 17px !important;
+        margin-top: 36px !important;
+      }
+      #date{
+        margin-left: 90px !important;
+      }
+      input{
+        width: 280px;
+      }
+      #cvc-input{
+        width: 90px !important;
+      }
+      button{
+        width: 295px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="flex bg-image">
+    <div class="main-image">
+      <img class="bg-image-1" src="/images/bg-main-desktop.png" alt="">
+      <div class="hover-1">
+        <img class="cardFront" src="/images/bg-card-front.png" alt="">
+        <div class="front-card-data">
+          <div class="flex">
+            <div class="circle-1"></div>
+            <div class="circle-2"></div>
+          </div>
+          <h1 style="margin-top: 65px; letter-spacing: 3px; font-weight: 100;">0000 0000 0000 0000</h1>
+          <p id="jane" style="margin-top: 29px; font-size: 14px;">JANE APPLESSED <span id="date" style="margin-left: 210px;" ></span> 00/00</p>
+        </div>
+      </div>
+      <div>
+        <img class="cardBack" src="/images/bg-card-back.png" alt="">
+        <div class="cardBack-data"><p>000</p></div>
+      </div>
+    </div>
+    <div class="information">
+        <form action="">
+          <div>
+              <label for="name">CARDHOLDER NAME</label><br>
+              <input type="text" id="" name="name" placeholder="e.g. Jane Appleseed" required /><br>
+              <label for="cardNumber">CARD NUMBER</label><br>
+              <input type="number" id="" number="number" placeholder="e.g. 1234 5678 9123 0000" required /><br>
+              <div class="flex">
+                <div>
+                  <label for="month">EXP. DATE</label><br>
+                  <input style="width: 70px;" type="number" id="" number="number" placeholder="MM" required /><br>
+                </div>
+                <div>
+                  <label for="month">(MM/YY)</label><br>
+                  <input style="width: 70px; margin-left: 10px;" type="year" id="" number="number" placeholder="YY" required /><br>
+                </div>
+                
+                <div style="margin-left: 15px;">
+                  <label for="month">CVC</label><br>
+                  <input id="cvc-input" style="width: 140px;" type="number" id="" number="number" placeholder="e.g. 123" required />
+                </div>
+                </div>  
+            <div>
+              <button>Confirm</button>
+            </div>
+          </div>
+        </form>
+    </div>
+  </div>
+</body>
+</html>
